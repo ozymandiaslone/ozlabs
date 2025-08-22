@@ -1,0 +1,22 @@
+===========
+== IDEAS ==
+===========
+
+- Liar's dice
+  -> Bots playing Liar's dice
+
+- Cellular automata where ML agents learn 
+  to 'crack' neighboring cells' 'codes' &
+  genereate their own new ownership 'code'
+
+  -> Each agent cell has an encoder/decoder
+     which we may want to allow to mutate
+
+  -> Start the field out by creating a tor
+     -oidal grid and populating it randomly
+     (or perhaps according to some distribu
+     -tion | or perhaps even order them seq
+     -uentially) with 512-bit binary values.
+
+  -> Each 'owned' cell attempts to first gu
+     -ess its neighboring cells' values. 
