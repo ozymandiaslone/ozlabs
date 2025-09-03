@@ -1,8 +1,10 @@
+(declaim (optimize (speed 3) (debug 0) (safety 0) (space 0)))
 (ql:quickload '(:hunchentoot :drakma))
 
 (defparameter *proxy-routes*
-  '(("/liarsdice" . "http://localhost:8090")
+  '(("/liarsdice" . "http://localhost:3000")
     ("/service2"  . "http://localhost:5002")))
+(defparameter *portnum* 8080)
 
 (defun find-proxy-route (path)
   "Find matching proxy route for given path"
@@ -17,6 +19,7 @@
   "Handle proxy requests"
   (let* ((path (hunchentoot:script-name*))
          (route (find-proxy-route path)))
+;;    (format t "Path: ~A | route: ~A%" path route)
     (when route
       (let* ((prefix (car route))
              (target (cdr route))
@@ -58,5 +61,6 @@
             'hunchentoot:dispatch-easy-handlers))
 
 ;; Start server
-(defparameter *server* (make-instance 'hunchentoot:easy-acceptor :port 8080))
+(format t "Starting server @ port: ~A" *portnum*)
+(defparameter *server* (make-instance 'hunchentoot:easy-acceptor :port *portnum*))
 (hunchentoot:start *server*)
