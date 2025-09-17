@@ -3,7 +3,7 @@
 
 (defparameter *proxy-routes*
   '(("/liarsdice" . "http://localhost:3000")
-    ("/service2"  . "http://localhost:5002")))
+    ("/fitzer"  . "http://localhost:3001")))
 (defparameter *portnum* 8080)
 
 (defun find-proxy-route (path)
@@ -32,9 +32,13 @@
         (format t "Proxying ~A to ~A~%" path full-url)
         (handler-case
             (multiple-value-bind (body status headers)
+
                 (drakma:http-request full-url
-                                     :method (hunchentoot:request-method*)
-                                     :want-stream nil)
+                     :method (hunchentoot:request-method*)
+                     :content (hunchentoot:raw-post-data :want-stream nil)
+                     :content-type (hunchentoot:header-in* "content-type")
+                     :want-stream nil)
+
               (setf (hunchentoot:return-code*) status)
               (let ((content-type (cdr (assoc :content-type headers))))
                 (when content-type
