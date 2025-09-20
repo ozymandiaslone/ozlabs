@@ -203,26 +203,25 @@
     <div class="container">
         <div class="header">
             <h1>ozlabs.dev</h1>
-            <p class="subtitle">Experimental Projects & Technical Adventures</p>
+            <p class="subtitle">Projects, Adventures, and stuff I made</p>
             
             <div class="nav-links">
                 <a href="/fitzer" class="nav-link">Fitzer</a>
                 <a href="/liarsdice" class="nav-link">Liar's Dice</a>
-                <!-- Add more links as needed -->
             </div>
         </div>
 
         <div class="content">
             <div class="section">
-                <h2>How This Site Works</h2>
-                <p>This site runs on a simple reverse proxy I wrote in Common Lisp. Instead of having separate web servers on different ports, everything goes through one Lisp process that decides where to send requests based on the URL path.</p>
+                <h2>How This Site Works... Generally</h2>
+                <p>This site runs on a simple reverse proxy I wrote in Common Lisp. Instead of locking myself in to one particular backend server, I host this lisp process at the root of my site which can proxy requests to other localhost webservers.</p>
                 
-                <p>I'm using <strong>Hunchentoot</strong> as the web server and <strong>Drakma</strong> for making HTTP requests to the backend services.</p>
+                <p>I used <strong>Hunchentoot</strong> as the web server and <strong>Drakma</strong> for making HTTP requests to the backend services.</p>
             </div>
 
             <div class="section">
-                <h2>The Code Breakdown</h2>
-                <p>The routing table is just a list of path prefixes and where they should go:</p>
+                <h2>Lisp Code</h2>
+                <p>The routing table is just a list of cons cells containing path prefixes and where they should go:</p>
                 
                 <div class="code-block">
 (defparameter *proxy-routes*
@@ -244,7 +243,7 @@
 
             <div class="section">
                 <h2>Why Lisp?</h2>
-                <p>Honestly, I just like Lisp. But it does have some practical advantages here:</p>
+                <p>IDK really. I watched a talk on youtube about common lisp and it sounded interesting, so I took a stab at it. If I wanted to pretend I had good reasons to use lisp they would be:</p>
                 
                 <div class="tech-stack">
                     <div class="tech-item">
@@ -253,15 +252,11 @@
                     </div>
                     <div class="tech-item">
                         <h3>Good Libraries</h3>
-                        <p>Hunchentoot and Drakma are solid, well-maintained HTTP libraries</p>
+                        <p>Hunchentoot and Drakma exist, and are seemingly well-maintained</p>
                     </div>
                     <div class="tech-item">
-                        <h3>Fast Enough</h3>
-                        <p>Compiles to native code with decent performance optimizations</p>
-                    </div>
-                    <div class="tech-item">
-                        <h3>Easy to Debug</h3>
-                        <p>Simple control flow, clear error messages, minimal magic</p>
+                        <h3>Fast (Enough for me)</h3>
+                        <p>Compiles to native code with decent performance optimizations thanks to sbcl</p>
                     </div>
                 </div>
             </div>
@@ -275,7 +270,7 @@
         </div>
 
         <div class="footer">
-            <p>Built with Common Lisp • Hunchentoot • A healthy dose of curiosity</p>
+            <p>Built with Common Lisp • Hunchentoot • a lil curiosity</p>
         </div>
     </div>
 </body>
