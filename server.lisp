@@ -6,6 +6,19 @@
     ("/fitzer"  . "http://localhost:3001")))
 (defparameter *portnum* 8080)
 
+;; Static handler for other files
+(hunchentoot:define-easy-handler (static-files :uri (lambda (request)
+                                                      (let ((path (hunchentoot:script-name request)))
+                                                        (and (not (string= path "/"))
+                                                             (not (find-proxy-route path))))))
+    ()
+  (let ((file-path (merge-pathnames 
+                    (subseq (hunchentoot:script-name*) 1) ; remove leading /
+                    #P"./public/")))
+    (when (probe-file file-path)
+      (hunchentoot:handle-static-file file-path))))
+
+
 (defun find-proxy-route (path)
   "Find matching proxy route for given path"
   (find-if (lambda (route)
