@@ -1,1 +1,282 @@
-<h1>Hello, Seaman!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⌨️ozlabs⌨️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.06)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.7;
+        }
+
+        .header * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            overflow-x: auto;
+            border-left: 4px solid #3498db;
+        }
+
+        .highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .tech-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            background: #f8f9fa;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ozlabs.dev</h1>
+            <p class="subtitle">Experimental Projects & Technical Adventures</p>
+            
+            <div class="nav-links">
+                <a href="/fitzer" class="nav-link">Fitzer</a>
+                <a href="/liarsdice" class="nav-link">Liar's Dice</a>
+                <!-- Add more links as needed -->
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>How This Site Works</h2>
+                <p>This site runs on a simple reverse proxy I wrote in Common Lisp. Instead of having separate web servers on different ports, everything goes through one Lisp process that decides where to send requests based on the URL path.</p>
+                
+                <p>I'm using <strong>Hunchentoot</strong> as the web server and <strong>Drakma</strong> for making HTTP requests to the backend services.</p>
+            </div>
+
+            <div class="section">
+                <h2>The Code Breakdown</h2>
+                <p>The routing table is just a list of path prefixes and where they should go:</p>
+                
+                <div class="code-block">
+(defparameter *proxy-routes*
+  '(("/liarsdice" . "http://localhost:3000")
+    ("/fitzer"    . "http://localhost:3001")))
+                </div>
+
+                <p>When a request comes in, <code>find-proxy-route</code> checks if the path starts with any of these prefixes. If it finds a match, <code>proxy-handler</code> does the actual work:</p>
+
+                <ul class="feature-list">
+                    <li><strong>Strips the prefix:</strong> <code>/fitzer/some/page</code> becomes <code>/some/page</code></li>
+                    <li><strong>Builds the upstream URL:</strong> <code>http://localhost:3001/some/page</code></li>
+                    <li><strong>Copies the original request:</strong> Same method (GET/POST), headers, and body</li>
+                    <li><strong>Forwards the response:</strong> Status code, headers, and content back to the browser</li>
+                </ul>
+
+                <p>The dispatcher function plugs into Hunchentoot's routing system, so it gets first dibs on every request. If no proxy route matches, it falls back to normal handlers (like serving this index.html file).</p>
+            </div>
+
+            <div class="section">
+                <h2>Why Lisp?</h2>
+                <p>Honestly, I just like Lisp. But it does have some practical advantages here:</p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h3>Compact Code</h3>
+                        <p>The entire proxy is about 50 lines including error handling</p>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Good Libraries</h3>
+                        <p>Hunchentoot and Drakma are solid, well-maintained HTTP libraries</p>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Fast Enough</h3>
+                        <p>Compiles to native code with decent performance optimizations</p>
+                    </div>
+                    <div class="tech-item">
+                        <h3>Easy to Debug</h3>
+                        <p>Simple control flow, clear error messages, minimal magic</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>What This Gets Me</h2>
+                <p>Each backend service can be whatever I want - Node.js, Python, Go, or even more Lisp. They all just need to listen on localhost and handle HTTP requests. The proxy takes care of making everything look like one cohesive site.</p>
+                
+                <p>It's a simple setup that works well for prototyping and hosting small projects without the overhead of containerization or complex deployment pipelines.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Built with Common Lisp • Hunchentoot • A healthy dose of curiosity</p>
+        </div>
+    </div>
+</body>
+</html>
