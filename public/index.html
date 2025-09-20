@@ -20,6 +20,19 @@
             padding: 2rem;
         }
 
+        .code-image {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .code-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e0e0e0;
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -268,7 +281,9 @@
                 <p>It's a simple setup that works well for prototyping and hosting small projects without the overhead of containerization or complex deployment pipelines.</p>
                 <p>From there, cloudflared tunnels + my Dell R620 (a rackmount server from 2012) allows me to easily self-host at home even though my ISP doesn't allow things like port forwarding.</p>
                 <h2>And finally - here is the full code for those who are curious :: </h2>
-                <img src="/code.png" alt="An image of the Lisp code used to create the root of this site">
+                <div class="code-image">
+                  <img src="/code.png" alt="An image of the Lisp code used to create the root of this site">
+                </div>
             </div>
         </div>
 
